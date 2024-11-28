@@ -1,0 +1,2500 @@
+MINIPROJECT
+WEBSITE: SCOREFEED
+Page 1: Index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Student Details</title>
+ <style>
+ .logo {
+ position: absolute;
+ top: 0;
+ left: 05;
+ width: 400px; /* Adjust size as needed */
+ height: auto;
+ }
+ body {
+ font-family: 'Arial', sans-serif;
+ margin: 0;
+ padding: 0;
+ background-color: #000000;
+ color: #ffffff;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ }
+ .container {
+ background: linear-gradient(145deg, #ffffff, #ffffff);
+ border-radius: 15px;
+ padding: 40px;
+ width: 90%;
+ max-width: 400px;
+ box-shadow: 0 10px 30px rgba(255, 0, 0, 0.597);
+ text-align: center;
+ animation: fadeIn 1s ease-in-out;
+ }
+ h1 {
+ color: #ff0000;
+ font-size: 28px;
+ margin-bottom: 30px;
+ }
+ label {
+ display: block;
+ font-size: 16px;
+ margin-bottom: 10px;
+ color: #000000;
+ text-align: left;
+ }
+ input[type="text"] {
+ width: 100%;
+ padding: 12px;
+ font-size: 16px;
+ border-radius: 5px;
+ border: none;
+ background: #ffffff;
+ color: #e0e0e0;
+ outline: none;
+ margin-bottom: 20px;
+ box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+ transition: transform 0.3s, box-shadow 0.3s;
+ }
+ input[type="text"]:focus {
+ transform: scale(1.02);
+ box-shadow: inset 0 2px 8px rgba(255, 0, 0, 0.783);
+ }
+ button {
+ width: 100%;
+ padding: 12px;
+ font-size: 18px;
+ border: none;
+ border-radius: 5px;
+ background-color: #ff0000;
+ color: #ffffff;
+ cursor: pointer;
+ transition: background-color 0.3s ease, transform 0.3s ease;
+ text-transform: uppercase;
+ font-weight: bold;
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: translateY(-2px);
+ }
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(20px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ input[type="text"] {
+ font-size: 14px;
+ }
+ button {
+ font-size: 16px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <img src="https://i.ibb.co/v43LD9J/New-Project.jpg"
+ alt="Logo"
+ class="logo">
+ <div class="container">
+ <h1>Enter Student Details</h1>
+ <form id="studentForm">
+ <label for="name">Student Name:</label>
+ <input type="text" id="name" required placeholder="Enter Name">
+ <label for="prn">PRN (Permanent Registration Number):</label>
+ <input type="text" id="prn" required placeholder="Enter PRN">
+ <button type="submit">Save & Proceed</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('studentForm').addEventListener('submit', function(e) {
+ e.preventDefault(); // Prevent the form from submitting
+ const name = document.getElementById('name').value;
+ const prn = document.getElementById('prn').value;
+ if (name && prn) {
+ // Save student details in localStorage
+ localStorage.setItem('studentName', name);
+ localStorage.setItem('studentPRN', prn);
+ // Redirect to the core subjects input page
+ window.location.href = 'engineering_mathematics.html'; // Change to the actual next page for subject input
+ } else {
+ alert('Please enter both the name and PRN.');
+ }
+ });
+ </script>
+</body>
+</html>
+
+Page 2: Engineering Mathematics-1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Engineering Mathematics I</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative; /* Required for absolute positioning of the pseudo-element */
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://media.istockphoto.com/id/525242101/vector/mathbackground.jpg?s=612x612&w=0&k=20&c=pxDSP3dYr2VfWWdcNfCmQ_jwhTGQb4FUTZzU54c1Djk='); /* Mathematical background
+*/
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1; /* Ensure that the blurred background stays behind the content */
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative; /* Ensures the content stays above the background */
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #2980b9;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Engineering Mathematics I</h1>
+ <!-- Form for entering marks -->
+ <form id="engineeringMathForm">
+ <div class="input-group">
+ <h3>CIE Marks (Total 40)</h3>
+ <label for="assignment">Assignment:</label>
+ <input type="number" id="assignment" name="assignment" max="6" required>
+ <label for="presentation">Presentation:</label>
+ <input type="number" id="presentation" name="presentation" max="6" required>
+ <label for="viva">Viva:</label>
+ <input type="number" id="viva" name="viva" max="6" required>
+ <label for="quiz">Quiz:</label>
+ <input type="number" id="quiz" name="quiz" max="6" required>
+ <label for="unitTest">Unit Test:</label>
+ <input type="number" id="unitTest" name="unitTest" max="6" required>
+ <label for="attendance">Attendance:</label>
+ <input type="number" id="attendance" name="attendance" max="10" required>
+ </div>
+ <div class="input-group">
+ <h3>ETE Marks (Total 60)</h3>
+ <label for="ete">ETE Marks:</label>
+ <input type="number" id="ete" name="ete" max="60" required>
+ </div>
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div>
+ <button type="submit">Next: Applied Physics</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('engineeringMathForm').onsubmit = function(event) {
+ event.preventDefault(); // Prevent the form from submitting
+ const assignment = document.getElementById('assignment').value;
+ const presentation = document.getElementById('presentation').value;
+ const viva = document.getElementById('viva').value;
+ const attendance = document.getElementById('attendance').value;
+ const quiz = document.getElementById('quiz').value;
+ const unitTest = document.getElementById('unitTest').value;
+ const ete = document.getElementById('ete').value;
+ const tw = document.getElementById('tw').value;
+ // Calculate total CIE marks
+ const cie = parseInt(assignment) + parseInt(presentation) + parseInt(viva) + parseInt(attendance) + parseInt(quiz) +
+parseInt(unitTest);
+ // Save the marks in localStorage
+ const coreMarks = JSON.parse(localStorage.getItem('coreMarks')) || {};
+ coreMarks['engineeringMathematics'] = { cie: cie, ete: ete, tw: tw };
+ localStorage.setItem('coreMarks', JSON.stringify(coreMarks));
+ // Proceed to the next step
+ window.location.href = "applied_physics.html";
+ };
+ </script>
+</body>
+</html>
+Page 3: Applied Physics
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Applied Physics</title>
+ <style>
+ * * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative; /* Required for absolute positioning of the pseudo-element */
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://media.istockphoto.com/id/936903524/vector/blackboard-inscribed-with-scientific-formulas-andcalculations-in-physics-and-mathematicscan.jpg?s=612x612&w=0&k=20&c=sRLsJbHUVOYvZ_M16hti4fF9NM0RysfjAPUQrCJ8o4U='); /* Mathematical background */
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1; /* Ensure that the blurred background stays behind the content */
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative; /* Ensures the content stays above the background */
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Applied Physics</h1>
+ <!-- Form for entering marks -->
+ <form id="appliedPhysicsForm">
+ <div class="input-group">
+ <h3>CIE Marks (Total 40)</h3>
+ <label for="assignment">Assignment:</label>
+ <input type="number" id="assignment" name="assignment" max="6" required>
+ <label for="presentation">Presentation:</label>
+ <input type="number" id="presentation" name="presentation" max="6" required>
+ <label for="viva">Viva:</label>
+ <input type="number" id="viva" name="viva" max="6" required>
+ <label for="quiz">Quiz:</label>
+ <input type="number" id="quiz" name="quiz" max="6" required>
+ <label for="unitTest">Unit Test:</label>
+ <input type="number" id="unitTest" name="unitTest" max="6" required>
+ <label for="attendance">Attendance:</label>
+ <input type="number" id="attendance" name="attendance" max="10" required>
+ </div>
+ <div class="input-group">
+ <h3>ETE Marks (Total 60)</h3>
+ <label for="ete">ETE Marks:</label>
+ <input type="number" id="ete" name="ete" max="60" required>
+ </div>
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div>
+ <button type="submit">Next: Engineering Graphics</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('appliedPhysicsForm').onsubmit = function(event) {
+ event.preventDefault(); // Prevent the form from submitting
+ const assignment = document.getElementById('assignment').value;
+ const presentation = document.getElementById('presentation').value;
+ const viva = document.getElementById('viva').value;
+ const attendance = document.getElementById('attendance').value;
+ const quiz = document.getElementById('quiz').value;
+ const unitTest = document.getElementById('unitTest').value;
+ const ete = document.getElementById('ete').value;
+ const tw = document.getElementById('tw').value;
+ // Calculate total CIE marks
+ const cie = parseInt(assignment) + parseInt(presentation) + parseInt(viva) + parseInt(attendance) + parseInt(quiz) +
+parseInt(unitTest);
+ // Save the marks in localStorage
+ const coreMarks = JSON.parse(localStorage.getItem('coreMarks')) || {};
+ coreMarks['appliedPhysics'] = { cie: cie, ete: ete, tw: tw };
+ localStorage.setItem('coreMarks', JSON.stringify(coreMarks));
+ // Redirect to the next subject page
+ window.location.href = 'engineering_graphics.html'; // Navigate to next subject
+ };
+ </script>
+</body>
+</html>
+Page 4: Engineering Graphics
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Engineering Graphics</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://static.vecteezy.com/system/resources/thumbnails/048/576/954/small/mechanical-engineeringdrawings-on-black-background-tap-tools-borer-technical-design-cover-blueprint-vector.jpg'); /* Mathematical background */
+ background-size: cover;
+ background-position: center;
+ filter: blur(7px);
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgb(255, 0, 0);
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ee0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Engineering Graphics</h1>
+ <!-- Form for entering marks -->
+ <form id="engineeringGraphicsForm">
+ <div class="input-group">
+ <h3>CIE Marks (Total 40)</h3>
+ <label for="assignment">Assignment:</label>
+ <input type="number" id="assignment" name="assignment" max="6" required>
+ <label for="presentation">Presentation:</label>
+ <input type="number" id="presentation" name="presentation" max="6" required>
+ <label for="viva">Viva:</label>
+ <input type="number" id="viva" name="viva" max="6" required>
+ <label for="quiz">Quiz:</label>
+ <input type="number" id="quiz" name="quiz" max="6" required>
+ <label for="unitTest">Unit Test:</label>
+ <input type="number" id="unitTest" name="unitTest" max="6" required>
+ <label for="attendance">Attendance:</label>
+ <input type="number" id="attendance" name="attendance" max="10" required>
+ </div>
+ <div class="input-group">
+ <h3>ETE Marks (Total 60)</h3>
+ <label for="ete">ETE Marks:</label>
+ <input type="number" id="ete" name="ete" max="60" required>
+ </div>
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div>
+ <button type="submit">Next: Basics of Electrical Technology</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('engineeringGraphicsForm').onsubmit = function(event) {
+ event.preventDefault(); // Prevent the form from submitting
+ const assignment = document.getElementById('assignment').value;
+ const presentation = document.getElementById('presentation').value;
+ const viva = document.getElementById('viva').value;
+ const attendance = document.getElementById('attendance').value;
+ const quiz = document.getElementById('quiz').value;
+ const unitTest = document.getElementById('unitTest').value;
+ const ete = document.getElementById('ete').value;
+ const tw = document.getElementById('tw').value;
+ // Calculate total CIE marks
+ const cie = parseInt(assignment) + parseInt(presentation) + parseInt(viva) + parseInt(attendance) + parseInt(quiz) +
+parseInt(unitTest)
+ // Save the marks in localStorage
+ const coreMarks = JSON.parse(localStorage.getItem('coreMarks')) || {};
+ coreMarks['engineeringGraphics'] = { cie: cie, ete: ete, tw: tw };
+ localStorage.setItem('coreMarks', JSON.stringify(coreMarks));
+ // Redirect to next subject
+ window.location.href = 'basics_of_electrical_technology.html'; // Navigate to next subject
+ };
+ </script>
+</body>
+</html>
+Page 5: Basics of Electrical Technology
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Basics of Electrical Technology</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://c8.alamy.com/comp/2HKCNAA/programming-code-running-over-computer-screen-terminalhacking-concept-3d-rendering-2HKCNAA.jpg'); /* Background Image */
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgb(255, 0, 0);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Basics of Electrical Technology</h1>
+ <form id="basicsOfElectricalTechnologyForm">
+ <h3>CIE Marks (Total 40)</h3>
+ <div class="input-group">
+ <label for="assignment">Assignment:</label>
+ <input type="number" id="assignment" name="assignment" max="6" required><br><br>
+ </div>
+ <div class="input-group">
+ <label for="presentation">Presentation:</label>
+ <input type="number" id="presentation" name="presentation" max="6" required><br><br>
+ </div>
+ <div class="input-group">
+ <label for="viva">Viva:</label>
+ <input type="number" id="viva" name="viva" max="6" required><br><br>
+ </div>
+ <div class="input-group">
+ <label for="quiz">Quiz:</label>
+ <input type="number" id="quiz" name="quiz" max="6" required><br><br>
+ </div>
+ <div class="input-group">
+ <label for="unitTest">Unit Test:</label>
+ <input type="number" id="unitTest" name="unitTest" max="6" required><br><br>
+ </div>
+ <div class="input-group">
+ <label for="attendance">Attendance:</label>
+ <input type="number" id="attendance" name="attendance" max="10" required><br><br>
+ </div>
+ <h3>ETE Marks (Total 60)</h3>
+ <div class="input-group">
+ <label for="ete">ETE Marks:</label>
+ <input type="number" id="ete" name="ete" max="60" required><br><br>
+ </div>
+ <h3>TW Marks (Total 25)</h3>
+ <div class="input-group">
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required><br><br>
+ </div>
+ <button type="submit">Next: Fundamentals of Programming Language</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('basicsOfElectricalTechnologyForm').onsubmit = function(event) {
+ event.preventDefault();
+ const assignment = document.getElementById('assignment').value;
+ const presentation = document.getElementById('presentation').value;
+ const viva = document.getElementById('viva').value;
+ const attendance = document.getElementById('attendance').value;
+ const quiz = document.getElementById('quiz').value;
+ const unitTest = document.getElementById('unitTest').value;
+ const ete = document.getElementById('ete').value;
+ const tw = document.getElementById('tw').value;
+ // Calculate total CIE marks
+ const cie = parseInt(assignment) + parseInt(presentation) + parseInt(viva) + parseInt(attendance) + parseInt(quiz) +
+parseInt(unitTest);
+ // Save the marks in localStorage
+ const coreMarks = JSON.parse(localStorage.getItem('coreMarks')) || {};
+ coreMarks['basicsOfElectricalTechnology'] = { cie: cie, ete: ete, tw: tw };
+ localStorage.setItem('coreMarks', JSON.stringify(coreMarks));
+ // Redirect to next subject page
+ window.location.href = 'fundamentals_of_programming_language.html';
+ }
+ </script>
+</body>
+</html>
+Page 6: Fundamentals of Programming Language
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Fundamentals of Programming Language</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://c8.alamy.com/comp/2HKCNAA/programming-code-running-over-computer-screen-terminalhacking-concept-3d-rendering-2HKCNAA.jpg'); /* Background Image */
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgb(255, 0, 0);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Fundamentals of Programming Language</h1>
+ <form id="fundamentalsOfProgrammingLanguageForm">
+ <div class="input-group">
+ <h3>CIE Marks (Total 40)</h3>
+ <label for="assignment">Assignment:</label>
+ <input type="number" id="assignment" name="assignment" max="6" required>
+ <label for="presentation">Presentation:</label>
+ <input type="number" id="presentation" name="presentation" max="6" required>
+ <label for="viva">Viva:</label>
+ <input type="number" id="viva" name="viva" max="6" required>
+ <label for="quiz">Quiz:</label>
+ <input type="number" id="quiz" name="quiz" max="6" required>
+ <label for="unitTest">Unit Test:</label>
+ <input type="number" id="unitTest" name="unitTest" max="6" required>
+ <label for="attendance">Attendance:</label>
+ <input type="number" id="attendance" name="attendance" max="10" required>
+ </div
+ <div class="input-group">
+ <h3>ETE Marks (Total 60)</h3>
+ <label for="ete">ETE Marks:</label>
+ <input type="number" id="ete" name="ete" max="60" required>
+ </div
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div
+ <button type="submit">Next: ICC-A</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('fundamentalsOfProgrammingLanguageForm').onsubmit = function(event) {
+ event.preventDefault();
+ const assignment = document.getElementById('assignment').value;
+ const presentation = document.getElementById('presentation').value;
+ const viva = document.getElementById('viva').value;
+ const attendance = document.getElementById('attendance').value;
+ const quiz = document.getElementById('quiz').value;
+ const unitTest = document.getElementById('unitTest').value;
+ const ete = document.getElementById('ete').value;
+ const tw = document.getElementById('tw').value;
+ // Calculate total CIE marks
+ const cie = parseInt(assignment) + parseInt(presentation) + parseInt(viva) + parseInt(attendance) + parseInt(quiz) +
+parseInt(unitTest);
+ // Save the marks in localStorage
+ const coreMarks = JSON.parse(localStorage.getItem('coreMarks')) || {};
+ coreMarks['fundamentalsOfProgrammingLanguage'] = { cie: cie, ete: ete, tw: tw };
+ localStorage.setItem('coreMarks', JSON.stringify(coreMarks));
+ // Redirect to the next subject or show result (you can change the button behavior here)
+ window.location.href = 'icc_a.html';
+ }
+ </script>
+</body>
+</html>
+Page 7: ICC-A
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>ICC-A</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://img.freepik.com/premium-photo/pattern-black-background-ethnic-tribal-ornaments-east-asia-indiamexico-aztecs-peru-brochure-booklet-flyer-website_494741-91229.jpg'); /* Background Image */
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgb(255, 0, 0);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for ICC-A</h1>
+ <form id="iccAForm">
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div>
+ <button type="submit">Next: ICC-B</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('iccAForm').onsubmit = function(event) {
+ event.preventDefault();
+ const tw = document.getElementById('tw').value;
+ // Save the marks in localStorage
+ const extraMarks = JSON.parse(localStorage.getItem('extraMarks')) || {};
+ extraMarks['iccA'] = { tw: tw };
+ localStorage.setItem('extraMarks', JSON.stringify(extraMarks));
+ // Redirect to next extra subject
+ window.location.href = 'icc_b.html'; // Navigate to next extra subject
+ };
+ </script>
+</body>
+</html>
+Page 8: ICC-B
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>ICC-B</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUqMQyWqc7EB10soFBWtbL1ibEJzFO9fxB320U7k3RR4grmcgz4qgUD7WwKafMcDOAw&usqp=CAU'); /* Background Image */
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for ICC-B</h1>
+ <form id="iccBForm">
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div>
+ <button type="submit">Next: Performing Arts</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('iccBForm').onsubmit = function(event) {
+ event.preventDefault();
+ const tw = document.getElementById('tw').value;
+ // Save the marks in localStorage
+ const extraMarks = JSON.parse(localStorage.getItem('extraMarks')) || {};
+ extraMarks['iccB'] = { tw: tw };
+ localStorage.setItem('extraMarks', JSON.stringify(extraMarks));
+ // Redirect to next extra subject
+ window.location.href = 'performing_arts.html'; // Navigate to next extra subject
+ };
+ </script>
+</body>
+</html>
+Page 9: Engineering Exploration Lab
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Engineering Exploration Lab</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://c8.alamy.com/comp/PF3NWG/desktop-source-code-and-technology-background-developer-orprogramer-with-coding-and-programming-wallpaper-by-computer-language-and-source-code-com-PF3NWG.jpg');
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px);
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #ff0000;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgb(255, 0, 0);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+ }
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Engineering Exploration Lab</h1>
+ <form id="engineeringExplorationLabForm">
+ <div class="input-group">
+ <h3>TW Marks (Total 50)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="50" required>
+ </div>
+ <button type="submit">Submit All Marks</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('engineeringExplorationLabForm').onsubmit = function(event) {
+ event.preventDefault();
+ const tw = document.getElementById('tw').value;
+ // Save the marks in localStorage
+ const extraMarks = JSON.parse(localStorage.getItem('extraMarks')) || {};
+ extraMarks['engineeringExplorationLab'] = { tw: tw };
+ localStorage.setItem('extraMarks', JSON.stringify(extraMarks));
+ // Redirect to results page
+ window.location.href = 'result.html'; // Navigate to results page
+ };
+ </script>
+</body>
+</html>
+Page 10: Performing Arts
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Performing Arts</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f4f7;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 15px;
+ position: relative;
+ }
+ /* Pseudo-element to create the blurred background */
+ body::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-image: url('https://static.vecteezy.com/system/resources/thumbnails/040/290/404/small_2x/ai-generated-black-andwhite-of-stage-with-curtain-and-stage-lights-photo.jpg'); /* Background Image */
+ background-size: cover;
+ background-position: center;
+ filter: blur(4px); /* Apply the blur effect to the background */
+ z-index: -1;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px 50px;
+ max-width: 800px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+ animation: fadeIn 1s ease-out;
+ max-height: 100%;
+ overflow-y: auto;
+ position: relative;
+ }
+ h1 {
+ text-align: center;
+ font-size: 36px;
+ font-weight: 700;
+ color: #2c3e50;
+ margin-bottom: 25px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ form {
+ display: flex;
+ flex-direction: column;
+ }
+ h3 {
+ font-size: 22px;
+ color: #34495e;
+ margin-bottom: 10px;
+ font-weight: 600;
+ }
+ .input-group {
+ margin-bottom: 25px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ padding: 20px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease;
+ }
+ .input-group:hover {
+ transform: scale(1.02);
+ }
+ label {
+ font-size: 16px;
+ color: #7f8c8d;
+ margin-bottom: 10px;
+ display: block;
+ }
+ input[type="number"] {
+ padding: 12px;
+ font-size: 16px;
+ width: 100%;
+ border: 2px solid #ccc;
+ border-radius: 10px;
+ background-color: #ecf0f1;
+ margin-bottom: 15px;
+ transition: border 0.3s ease, box-shadow 0.3s ease;
+ }
+ input[type="number"]:focus {
+ border-color: #db3434;
+ background-color: #ffffff;
+ outline: none;
+ box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+ }
+ button {
+ background-color: #ff0000;
+ color: white;
+ padding: 14px 28px;
+ font-size: 18px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ width: 100%;
+ margin-top: 20px;
+ transform: scale(1);
+ }
+ button:hover {
+ background-color: #ff0000;
+ transform: scale(1.05);
+
+ /* Fade-in animation */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(40px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Slide-in from top for title */
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-30px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ /* Input field animations */
+ @keyframes pulseInput {
+ 0% {
+ transform: scale(1);
+ }
+ 50% {
+ transform: scale(1.05);
+ }
+ 100% {
+ transform: scale(1);
+ }
+ }
+ input[type="number"]:hover {
+ animation: pulseInput 0.6s ease-in-out;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 25px;
+ }
+ h1 {
+ font-size: 28px;
+ }
+ h3 {
+ font-size: 18px;
+ }
+ input[type="number"] {
+ font-size: 14px;
+ padding: 8px;
+ }
+ button {
+ font-size: 16px;
+ padding: 12px 24px;
+ }
+ }
+ @media (max-width: 480px) {
+ h1 {
+ font-size: 24px;
+ }
+ h3 {
+ font-size: 16px;
+ }
+ button {
+ font-size: 14px;
+ padding: 10px 20px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Enter Marks for Performing Arts</h1>
+ <form id="performingArtsForm">
+ <div class="input-group">
+ <h3>TW Marks (Total 25)</h3>
+ <label for="tw">TW Marks:</label>
+ <input type="number" id="tw" name="tw" max="25" required>
+ </div>
+ <button type="submit">Next: Engineering Exploration Lab</button>
+ </form>
+ </div>
+ <script>
+ document.getElementById('performingArtsForm').onsubmit = function(event) {
+ event.preventDefault();
+ const tw = document.getElementById('tw').value;
+ // Save the marks in localStorage
+ const extraMarks = JSON.parse(localStorage.getItem('extraMarks')) || {};
+ extraMarks['performingArts'] = { tw: tw };
+ localStorage.setItem('extraMarks', JSON.stringify(extraMarks));
+ // Redirect to next extra subject
+ window.location.href = 'engineering_exploration_lab.html'; // Navigate to next subject
+ };
+ </script>
+</body>
+</html>
+Page 11: Result
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Result</title>
+ <style>
+ /* General Reset */
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: 'Poppins', sans-serif;
+ background: linear-gradient(135deg, #000000, #5e5e5e);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ overflow-y: auto;
+ padding: 20px;
+ color: #333;
+ }
+ .container {
+ background: rgba(255, 255, 255, 0.9);
+ border-radius: 15px;
+ padding: 40px;
+ max-width: 1000px;
+ width: 100%;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+ animation: fadeIn 1s ease-out;
+ }
+ h1 {
+ text-align: center;
+ font-size: 2.5rem;
+ font-weight: 700;
+ color: #ff0000;
+ margin-bottom: 20px;
+ animation: slideInFromTop 1s ease-out;
+ }
+ .student-info {
+ text-align: center;
+ margin-bottom: 30px;
+ }
+ .student-info p {
+ font-size: 1.2rem;
+ margin: 10px 0;
+ color: #34495e;
+ }
+ .subject {
+ background: linear-gradient(135deg, #f9f9f9, #e6e9f0);
+ padding: 20px;
+ margin-bottom: 20px;
+ border-radius: 15px;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ animation: fadeInScale 0.5s ease forwards;
+ opacity: 0;
+ }
+ .subject:hover {
+ transform: translateY(-5px) scale(1.03);
+ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+ }
+ .subject h3 {
+ font-size: 1.5rem;
+ font-weight: 600;
+ color: #2c3e50;
+ margin-bottom: 10px;
+ }
+ .subject p {
+ font-size: 1rem;
+ color: #7f8c8d;
+ margin: 5px 0;
+ }
+ .total {
+ font-weight: 700;
+ font-size: 1.2rem;
+ color: #2c3e50;
+ margin-top: 10px;
+ }
+ .cgpa {
+ text-align: center;
+ font-size: 1.8rem;
+ font-weight: 700;
+ color: #ff0000;
+ margin-top: 20px;
+ }
+ .button-container {
+ text-align: center;
+ margin-top: 30px;
+ }
+ .btn {
+ background: linear-gradient(135deg, #000000, #484a4b);
+ color: white;
+ padding: 14px 30px;
+ font-size: 1.2rem;
+ border: none;
+ border-radius: 30px;
+ cursor: pointer;
+ transition: background 0.3s ease, transform 0.3s ease;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
+ .btn:hover {
+ background: linear-gradient(135deg, #000000, #6b6d6d);
+ transform: scale(1.05);
+ }
+ /* Animations */
+ @keyframes fadeIn {
+ 0% {
+ opacity: 0;
+ transform: translateY(20px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ @keyframes slideInFromTop {
+ 0% {
+ opacity: 0;
+ transform: translateY(-20px);
+ }
+ 100% {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ @keyframes fadeInScale {
+ 0% {
+ opacity: 0;
+ transform: scale(0.9);
+ }
+ 100% {
+ opacity: 1;
+ transform: scale(1);
+ }
+ }
+ /* Responsive Design */
+ @media (max-width: 768px) {
+ .container {
+ padding: 20px;
+ }
+ h1 {
+ font-size: 2rem;
+ }
+ .subject h3 {
+ font-size: 1.2rem;
+ }
+ .cgpa {
+ font-size: 1.5rem;
+ }
+ .btn {
+ font-size: 1rem;
+ padding: 10px 20px;
+ }
+ }
+ @media (max-width: 480px) {
+ .subject p {
+ font-size: 0.9rem;
+ }
+ .cgpa {
+ font-size: 1.2rem;
+ }
+ .btn {
+ font-size: 0.9rem;
+ padding: 8px 16px;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h1>Result</h1>
+ <div class="student-info">
+ <p><strong>Name:</strong> <span id="studentName"></span></p>
+ <p><strong>PRN:</strong> <span id="studentPRN"></span></p>
+ </div>
+ <div id="subjects"></div>
+ <div class="cgpa" id="cgpaResult"></div>
+ <div class="button-container">
+ <button class="btn" onclick="window.location.href='index.html'">Go Back</button>
+ </div>
+ </div>
+ <script>
+ window.onload = function() {
+ // Get student name and PRN from localStorage
+ const studentName = localStorage.getItem('studentName');
+ const studentPRN = localStorage.getItem('studentPRN');
+ // Check if student name and PRN exist, if not redirect back to the first page
+ if (!studentName || !studentPRN) {
+ alert("Student details not found. Please enter the details again.");
+ window.location.href = "index.html"; // Redirect to the first page if details are not found
+ return;
+ }
+ // Display student name and PRN on the result page
+ document.getElementById('studentName').innerText = studentName;
+ document.getElementById('studentPRN').innerText = studentPRN;
+ // Get marks from localStorage for core and extra subjects
+ const coreMarks = JSON.parse(localStorage.getItem('coreMarks')) || {};
+ const extraMarks = JSON.parse(localStorage.getItem('extraMarks')) || {};
+ let totalMaxMarks = 750; // Total maximum marks (fixed as 750)
+ let totalMarksObtained = 0;
+ // Function to display marks for each subject
+ function displaySubjectMarks(subjectName, cie, ete, tw, cieMax, eteMax, twMax) {
+ // Convert marks to numbers in case they are stored as strings
+ cie = Number(cie);
+ ete = Number(ete);
+ tw = Number(tw);
+ // Correct calculation for total marks for the subject
+ const totalSubjectMarks = cie + ete + tw;
+ const maxSubjectMarks = cieMax + eteMax + twMax;
+ // Only display the subject if there are valid marks
+ if ((cie || ete || tw) !== 0) {
+ const subjectDiv = document.createElement('div');
+ subjectDiv.classList.add('subject');
+ subjectDiv.innerHTML = `
+ <h3>${subjectName}</h3>
+ <p><strong>CIE Marks:</strong> ${cie} / ${cieMax}</p>
+ <p><strong>ETE Marks:</strong> ${ete} / ${eteMax}</p>
+ <p><strong>TW Marks:</strong> ${tw} / ${twMax}</p>
+ <p class="total"><strong>Total Marks:</strong> ${totalSubjectMarks} / ${maxSubjectMarks}</p>
+ `;
+ document.getElementById('subjects').appendChild(subjectDiv);
+ totalMarksObtained += totalSubjectMarks;
+ }
+ }
+ // Core subjects
+ if (coreMarks['engineeringMathematics']) {
+ const { cie, ete, tw } = coreMarks['engineeringMathematics'];
+ displaySubjectMarks('Engineering Mathematics - I', cie, ete, tw, 40, 60, 25);
+ }
+ if (coreMarks['appliedPhysics']) {
+ const { cie, ete, tw } = coreMarks['appliedPhysics'];
+ displaySubjectMarks('Applied Physics', cie, ete, tw, 40, 60, 25);
+ }
+ if (coreMarks['engineeringGraphics']) {
+ const { cie, ete, tw } = coreMarks['engineeringGraphics'];
+ displaySubjectMarks('Engineering Graphics', cie, ete, tw, 40, 60, 25);
+ }
+ if (coreMarks['basicsOfElectricalTechnology']) {
+ const { cie, ete, tw } = coreMarks['basicsOfElectricalTechnology'];
+ displaySubjectMarks('Basics of Electrical Technology', cie, ete, tw, 40, 60, 25);
+ }
+ if (coreMarks['fundamentalsOfProgrammingLanguage']) {
+ const { cie, ete, tw } = coreMarks['fundamentalsOfProgrammingLanguage'];
+ displaySubjectMarks('Fundamentals of Programming Language', cie, ete, tw, 40, 60, 25);
+ }
+ // Extra subjects
+ if (extraMarks['iccA']) {
+ const { tw } = extraMarks['iccA'];
+ displaySubjectMarks('ICC-A', 0, 0, tw, 0, 0, 25);
+ }
+ if (extraMarks['iccB']) {
+ const { tw } = extraMarks['iccB'];
+ displaySubjectMarks('ICC-B', 0, 0, tw, 0, 0, 25);
+ }
+ if (extraMarks['performingArts']) {
+ const { tw } = extraMarks['performingArts'];
+ displaySubjectMarks('Performing Arts', 0, 0, tw, 0, 0, 25);
+ }
+ if (extraMarks['engineeringExplorationLab']) {
+ const { tw } = extraMarks['engineeringExplorationLab'];
+ displaySubjectMarks('Engineering Exploration Lab', 0, 0, tw, 0, 0, 50);
+ // Calculate CGPA
+ const cgpa = (totalMarksObtained / totalMaxMarks) * 10;
+ document.getElementById('cgpaResult').innerHTML = `Your CGPA is: ${cgpa.toFixed(2)}`;
+ };
+ </script>
+</body> 

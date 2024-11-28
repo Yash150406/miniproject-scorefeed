@@ -1,4 +1,5 @@
 This Program is designed to calculate Total Marks and CGPA (Cumulative Grade Point Average) for multiple students, considering both core and additional subjects. The program allows the user to input marks for core subjects (CIE, ETE, TW) and additional subjects, validate input values, calculate total marks, and compute CGPA on a scale of 10 for each student. It then displays the individual results and summarizes the academic performance for all students.
+
 ##Key Features:
 Core and Additional Subjects:
 Core subjects have marks distributed across CIE, ETE, and TW.
